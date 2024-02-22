@@ -18,7 +18,6 @@ export default function TodoList() {
     })
     .then(data => {
       // Handle the fetched data
-      console.log(data);
       setAllItems(data)
     })
     .catch(error => {
@@ -73,6 +72,16 @@ export default function TodoList() {
               </Row>
             </div>
           ))}
+
+        <Row className='h-12'/>
+
+        <Row>
+          <Col span={24} className='flex justify-center'>
+              <Link href='/todoHome/todoAdd' className='text-blue-400 underline'>Add Item to List</Link>
+          </Col>
+        </Row>
+
+        <Row className='h-8'/>
 
           {/* <Button>Add another row</Button> */}
         </main>

@@ -10,7 +10,6 @@ export default function Item({ params }: { params: { id: string } }) {
   const router = useRouter()
 
   const [itemName, setItemName] = useState('')
-  const [itemID, setItemID] = useState(0)
   const [itemCompleted, setItemCompleted] = useState(false)
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function Item({ params }: { params: { id: string } }) {
     })
     .then(data => {
       setItemName(data.item)
-      setItemID(data.id)
       setItemCompleted(data.completed)
     })
     .catch(error => {
@@ -43,7 +41,7 @@ export default function Item({ params }: { params: { id: string } }) {
       console.log('trying to submit')
       try {
         const body = { 
-          'id': itemID, 
+          'id': params.id, 
           'item': itemName, 
           'completed': itemCompleted
       }
@@ -64,7 +62,7 @@ export default function Item({ params }: { params: { id: string } }) {
       console.log('trying to submit')
       try {
         const body = { 
-          'id': itemID, 
+          'id': params.id, 
           'item': itemName, 
           'completed': itemCompleted
       }
@@ -92,7 +90,7 @@ export default function Item({ params }: { params: { id: string } }) {
   
           <Form layout="vertical">
           <Col span={24} className='flex justify-center'>
-              <Col span={3} className='justify-around'>
+              {/* <Col span={3} className='justify-around'>
                   <Form.Item label={<label style={{ color: "red" }}>Add Item ID</label>}>
                       <InputNumber 
                         placeholder="Add item ID" 
@@ -100,7 +98,7 @@ export default function Item({ params }: { params: { id: string } }) {
                         value={itemID}
                       />
                   </Form.Item>
-              </Col>
+              </Col> */}
   
               <Col span={3}/>
   

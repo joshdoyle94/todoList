@@ -14,7 +14,7 @@ export default async function TodoList() {
         <Row className='h-8'/>
 
         <Row>
-          <Col span={24} className='flex justify-center'>
+          <Col span={24} className='flex justify-center text-blue-400 underline'>
               <Link href='todoHome/todoAdd'>Add Item to List</Link>
           </Col>
         </Row>
@@ -22,7 +22,7 @@ export default async function TodoList() {
         <Row className='h-8'/>
 
         <Row>
-          <Col span={24} className='flex justify-center'>
+          <Col span={24} className='flex justify-center text-blue-400 underline'>
               <Link href='/todoHome/todoList'>View List</Link>
           </Col>
         </Row>
