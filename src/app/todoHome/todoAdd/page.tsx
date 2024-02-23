@@ -107,12 +107,6 @@ const submitData = async () => {
                     <Button type="primary" htmlType="submit" className='bg-lime-500' onClick={submitData}>Add New Item to List</Button>
                 </Form.Item>
             </Col>
-
-            <Col span={24} className='flex justify-center'>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit" className='bg-lime-500' onClick={clickHandler}>Console Log</Button>
-                </Form.Item>
-            </Col>
         </Row>
         </Form>
       </div>
