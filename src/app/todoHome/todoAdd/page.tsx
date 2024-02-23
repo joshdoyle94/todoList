@@ -24,22 +24,38 @@ const checkBoxHandler = (e: any) => {
 
 const submitData = async () => {
     try {
-      const body = { 
-        'id': itemID, 
+      const body = {  
         'item': itemName, 
         'completed': itemCompleted
     }
-      await fetch(`/api/listItems/`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      })
+        const response = await fetch(`/api/listItems/`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        })
 
-      router.push('/todoHome/todoList')
-      console.log(`successfully added: ${body} to database`)
+        if (!response.ok) {
+            throw new Error('Failed to add item');
+        }
+
+        const newItem = await response.json();
+        console.log('Successfully added:', newItem);
+
+        router.push('/todoHome/todoList')
+        console.log(`successfully added: ${body} to database`)
+
+
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const clickHandler = () => {
+    const body = {  
+        'item': itemName, 
+        'completed': itemCompleted
+    }
+    console.log(body)
   }
 
   return (
@@ -53,14 +69,14 @@ const submitData = async () => {
 
         <Form layout="vertical">
         <Col span={24} className='flex justify-center'>
-            <Col span={3} className='justify-around'>
+            {/* <Col span={3} className='justify-around'>
                 <Form.Item label={<label style={{ color: "red" }}>Add Item ID</label>}>
                     <InputNumber 
                         placeholder="Add item ID" 
                         onChange={(value) => setItemID(value)}
                     />
                 </Form.Item>
-            </Col>
+            </Col> */}
 
             <Col span={3}/>
 
@@ -89,6 +105,12 @@ const submitData = async () => {
             <Col span={24} className='flex justify-center'>
                 <Form.Item>
                     <Button type="primary" htmlType="submit" className='bg-lime-500' onClick={submitData}>Add New Item to List</Button>
+                </Form.Item>
+            </Col>
+
+            <Col span={24} className='flex justify-center'>
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" className='bg-lime-500' onClick={clickHandler}>Console Log</Button>
                 </Form.Item>
             </Col>
         </Row>

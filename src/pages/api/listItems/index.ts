@@ -17,10 +17,9 @@ export default async function handle(
         }
         } else if (req.method === 'POST') {
             try {
-                const { id, item, completed } = req.body
+                const { item, completed } = req.body
                 const newItem = await prisma.listItems.create({
                 data: {
-                    id: Number(id),
                     item: item,
                     completed: completed,
                 }})
